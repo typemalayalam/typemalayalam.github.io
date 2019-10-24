@@ -82,10 +82,8 @@
         <div class="demo-container mdl-grid">
           <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
           <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-            <div class="demo-crumbs mdl-color-text--grey-500">
-              Google &gt; Type Malayalam App &gt; 
-            </div>
-          
+            
+            <form><textarea name="ta"  rows="6"  id="language" cols="6" style="width:600px;height:218px" ></textarea></form>
 
           </div>
         </div>
@@ -102,5 +100,35 @@
     </div>
     <a href="https://fb.me/typemalayalamapp" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">LIKE</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+  // Load the Google Transliteration API
+  google.load("elements", "1", {
+    packages: "transliteration"
+  });
+
+  function onLoad() {
+    var options = {
+      sourceLanguage: 'en',
+      destinationLanguage: ['ml', 'hi', 'kn', 'ta', 'te'],
+      shortcutKey: 'ctrl+m',
+      transliterationEnabled: true
+    }
+
+    // Create an instance on TransliterationControl with the required options.
+    var control = new google.elements.transliteration.TransliterationControl(options);
+
+    // Enable transliteration in the textfields with the given ids.
+    var ids = ["language"];
+    control.makeTransliteratable(ids);
+
+    // Show the transliteration control which can be used to toggle between English and Hindi and also choose other destination language.
+    control.showControl('translControl');
+  }
+
+  google.setOnLoadCallback(onLoad);
+</script>
   </body>
 </html>
