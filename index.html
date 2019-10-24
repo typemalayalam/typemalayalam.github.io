@@ -61,6 +61,36 @@
             z-index: 900;
         }
     </style>
+     <script type="text/javascript" src="https://www.google.com/jsapi">
+     </script>
+     <script type="text/javascript">
+ 
+       // Load the Google Transliterate API
+       google.load("elements", "1", {
+             packages: "transliteration"
+           });
+ 
+       function onLoad() {
+         var options = {
+             sourceLanguage:
+                 google.elements.transliteration.LanguageCode.ENGLISH,
+             destinationLanguage:
+                 [google.elements.transliteration.LanguageCode.HINDI],
+             shortcutKey: 'ctrl+g',
+             transliterationEnabled: true
+         };
+ 
+         // Create an instance on TransliterationControl with the required
+         // options.
+         var control =
+             new google.elements.transliteration.TransliterationControl(options);
+ 
+         // Enable transliteration in the textbox with id
+         // 'transliterateTextarea'.
+         control.makeTransliteratable(['transliterateTextarea']);
+       }
+       google.setOnLoadCallback(onLoad);
+     </script>
 </head>
 
 <body>
@@ -88,8 +118,8 @@
                 <div
                     class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
 
-                    <form><textarea name="ta" rows="6" id="language" cols="6"
-                            style="width:600px;height:218px"></textarea></form>
+                    Type in Hindi (Press Ctrl+g to toggle between English and Hindi)<br>
+                    <textarea id="transliterateTextarea" style="width:600px;height:200px"></textarea>
 
                 </div>
             </div>
@@ -108,35 +138,6 @@
         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">LIKE</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
-    <script type="text/javascript">
-        // Load the Google Transliteration API
-        google.load("elements", "1", {
-            packages: "transliteration"
-        });
-
-        function onLoad() {
-            var options = {
-                sourceLanguage: 'en',
-                destinationLanguage: ['ml', 'hi', 'kn', 'ta', 'te'],
-                shortcutKey: 'ctrl+m',
-                transliterationEnabled: true
-            }
-
-            // Create an instance on TransliterationControl with the required options.
-            var control = new google.elements.transliteration.TransliterationControl(options);
-
-            // Enable transliteration in the textfields with the given ids.
-            var ids = ["language"];
-            control.makeTransliteratable(ids);
-
-            // Show the transliteration control which can be used to toggle between English and Hindi and also choose other destination language.
-            control.showControl('translControl');
-        }
-
-        google.setOnLoadCallback(onLoad);
-    </script>
 </body>
 
 </html>
