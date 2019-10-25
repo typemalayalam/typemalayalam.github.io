@@ -18,6 +18,15 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46068824-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-46068824-1');
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A WebApp that helps you type malayalam fast and easy.">
@@ -62,36 +71,36 @@
             z-index: 900;
         }
     </style>
-     <script type="text/javascript" src="https://www.google.com/jsapi">
-     </script>
-     <script type="text/javascript">
- 
-       // Load the Google Transliterate API
-       google.load("elements", "1", {
-             packages: "transliteration"
-           });
- 
-       function onLoad() {
-         var options = {
-             sourceLanguage:
-                 google.elements.transliteration.LanguageCode.ENGLISH,
-             destinationLanguage:
-                 [google.elements.transliteration.LanguageCode.MALAYALAM],
-             shortcutKey: 'ctrl+g',
-             transliterationEnabled: true
-         };
- 
-         // Create an instance on TransliterationControl with the required
-         // options.
-         var control =
-             new google.elements.transliteration.TransliterationControl(options);
- 
-         // Enable transliteration in the textbox with id
-         // 'transliterateTextarea'.
-         control.makeTransliteratable(['transliterateTextarea']);
-       }
-       google.setOnLoadCallback(onLoad);
-     </script>
+    <script type="text/javascript" src="https://www.google.com/jsapi">
+    </script>
+    <script type="text/javascript">
+
+        // Load the Google Transliterate API
+        google.load("elements", "1", {
+            packages: "transliteration"
+        });
+
+        function onLoad() {
+            var options = {
+                sourceLanguage:
+                    google.elements.transliteration.LanguageCode.ENGLISH,
+                destinationLanguage:
+                    [google.elements.transliteration.LanguageCode.MALAYALAM],
+                shortcutKey: 'ctrl+g',
+                transliterationEnabled: true
+            };
+
+            // Create an instance on TransliterationControl with the required
+            // options.
+            var control =
+                new google.elements.transliteration.TransliterationControl(options);
+
+            // Enable transliteration in the textbox with id
+            // 'transliterateTextarea'.
+            control.makeTransliteratable(['transliterateTextarea']);
+        }
+        google.setOnLoadCallback(onLoad);
+    </script>
 </head>
 
 <body>
